@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["dom", "esnext"],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "removeComments": true,
+    "importHelpers": true,
+    "baseUrl": "./src/script",
+    "typeRoots" : [
+      "types",
+      "./node_modules/@types"
+    ],
+    "paths": {
+      "*": ["*"],
+      "component": ["component"]
+    }
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "./node_modules"
+  ],
+  "compileOnSave": false,
+  "atom": {
+    "rewriteTsConfig": false
+  }
+}
