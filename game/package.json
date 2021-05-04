@@ -5,23 +5,17 @@
   "description": "",
   "author": "gutchom",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gutchom/monster-rushhour.git"
-  },
-  "bugs": {
-    "url": "https://github.com/gutchom/monster-rushhour/issues"
-  },
   "scripts": {
     "build": "rimraf ./script && tsc && akashic-cli-scan asset script",
     "update": "akashic-cli-scan asset && akashic-cli-scan globalScripts",
-    "lint": "eslint -c .eslintrc.js \\\"src/**/*.ts\\\" --fix",
+    "lint": "eslint -c .eslintrc 'src/**/*.ts' --fix",
     "start": "akashic-sandbox .",
     "export-zip": "rimraf game.zip && akashic-cli-export-zip -o game.zip -s",
     "export-html": "rimraf game && akashic-cli-export-html -o game",
     "test": "jest"
   },
   "devDependencies": {
+    "@akashic/akashic-cli": "^2.9.1",
     "@akashic/akashic-cli-export-html": "1.4.3",
     "@akashic/akashic-cli-export-zip": "0.9.1",
     "@akashic/akashic-cli-scan": "0.10.0",
