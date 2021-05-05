@@ -1,68 +1,146 @@
-function main(param: g.GameMainParameterObject): void {
-	const scene = new g.Scene({
+export = function main() {
+	let isGameOver = false;
+	const font = new g.DynamicFont({
 		game: g.game,
-		// このシーンで利用するアセットのIDを列挙し、シーンに通知します
-		assetIds: ["player", "shot", "se"]
+		fontFamily: "sans-serif",
+		size: 64,
 	});
+	const scene = new g.Scene({ game: g.game, assetIds: [
+			'bg01',
+			'player',
+			'monster',
+		]});
 	scene.onLoad.add(() => {
-		// ここからゲーム内容を記述します
-
-		// 各アセットオブジェクトを取得します
-		const playerImageAsset = scene.asset.getImageById("player");
-		const shotImageAsset = scene.asset.getImageById("shot");
-		const seAudioAsset = scene.asset.getAudioById("se");
-
-		// プレイヤーを生成します
-		const player = new g.Sprite({
-			scene: scene,
-			src: playerImageAsset,
-			width: playerImageAsset.width,
-			height: playerImageAsset.height
+		const background = new g.Sprite({
+			scene,
+			src: scene.asset.getImageById('bg01'),
+			x: -200,
 		});
+		scene.append(background);
 
-		// プレイヤーの初期座標を、画面の中心に設定します
-		player.x = (g.game.width - player.width) / 2;
-		player.y = (g.game.height - player.height) / 2;
-		player.onUpdate.add(() => {
-			// 毎フレームでY座標を再計算し、プレイヤーの飛んでいる動きを表現します
-			// ここではMath.sinを利用して、時間経過によって増加するg.game.ageと組み合わせて
-			player.y = (g.game.height - player.height) / 2 + Math.sin(g.game.age % (g.game.fps * 10) / 4) * 10;
+		const awake = new g.FilledRect({
+			scene,
+			cssColor: 'lime',
+			width: 500,
+			height: 32,
+			x: 32,
+			y: 32,
+		});
+		scene.append(awake);
 
-			// プレイヤーの座標に変更があった場合、 modified() を実行して変更をゲームに通知します
+		const caffeine = new g.FilledRect({
+			scene,
+			cssColor: 'yellow',
+			width: 0,
+			height: 32,
+			x: 32,
+			y: 64,
+		});
+		scene.append(caffeine);
+
+		const player = new g.Sprite({
+			scene,
+			src: scene.asset.getImageById('player'),
+			width: scene.asset.getImageById('player').width,
+			height: scene.asset.getImageById('player').height,
+			x: scene.asset.getImageById('bg01').height / 2,
+			y: scene.asset.getImageById('bg01').height - scene.asset.getImageById('player').height - scene.asset.getImageById('bg01').height / 5,
+		});
+		scene.append(player);
+
+		scene.onPointDownCapture.add((e) => {
+			player.x = e.point.x;
+			player.modified();
+		});
+		scene.onPointMoveCapture.add((e) => {
+			player.x = e.point.x + e.startDelta.x;
+			player.modified();
+		});
+		scene.onPointUpCapture.add((e) => {
+			player.x = e.point.x + e.startDelta.x;
 			player.modified();
 		});
 
-		// 画面をタッチしたとき、SEを鳴らします
-		scene.onPointDownCapture.add(() => {
-			seAudioAsset.play();
-
-			// プレイヤーが発射する弾を生成します
-			const shot = new g.Sprite({
-				scene: scene,
-				src: shotImageAsset,
-				width: shotImageAsset.width,
-				height: shotImageAsset.height
+		function generateMonster() {
+			const monster = new g.Sprite({
+				scene,
+				src: scene.asset.getImageById('monster'),
+				x: Math.floor(g.game.random.generate() * g.game.width),
+				y: 0,
 			});
-
-			// 弾の初期座標を、プレイヤーの少し右に設定します
-			shot.x = player.x + player.width;
-			shot.y = player.y;
-			shot.onUpdate.add(() => {
-				// 毎フレームで座標を確認し、画面外に出ていたら弾をシーンから取り除きます
-				if (shot.x > g.game.width) shot.destroy();
-
-				// 弾を右に動かし、弾の動きを表現します
-				shot.x += 10;
-
-				// 変更をゲームに通知します
-				shot.modified();
+			monster.onUpdate.add(() => {
+				if (monster.y > scene.asset.getImageById('bg01').height) {
+					monster.destroy();
+				}
+				if (intersectArea(monster, player)) {
+					caffeine.width += 80;
+					caffeine.modified();
+					awake.width += 20;
+					awake.modified();
+					monster.destroy();
+				}
+				monster.y += 5 + monster.y * 0.05;
+				monster.modified();
 			});
-			scene.append(shot);
-		});
-		scene.append(player);
-		// ここまでゲーム内容を記述します
+			scene.append(monster);
+		}
+		scene.onUpdate.add(() => {
+			if (awake.width > 0) {
+				awake.width -= 1;
+				awake.modified();
+			}
+			if (caffeine.width > 0) {
+				caffeine.width -= 5;
+				caffeine.modified();
+			}
+			if (!isGameOver && g.game.age % 10 === 0) {
+				generateMonster();
+			}
+			if (caffeine.width > awake.width) {
+				scene.append(new g.FilledRect({
+					scene,
+					cssColor: 'black',
+					width: g.game.width,
+					height: g.game.height,
+				}));
+				scene.append(new g.Label({
+					scene,
+					font,
+					text: 'カフェイン中毒になりました',
+					textColor: 'red',
+					x: 200,
+					y: 300,
+				}));
+				isGameOver = true;
+			}
+			if (awake.width > 1000) {
+				scene.append(new g.FilledRect({
+					scene,
+					cssColor: 'white',
+					width: g.game.width,
+					height: g.game.height,
+				}));
+				scene.append(new g.Label({
+					scene,
+					font,
+					text: '起床成功！',
+					textColor: 'red',
+					x: 400,
+					y: 300,
+				}));
+				isGameOver = true;
+			}
+		})
 	});
 	g.game.pushScene(scene);
-}
+};
 
-export = main;
+interface Area {
+	x: number;
+	y: number;
+	width: number;
+	height: number;
+}
+function intersectArea(a: Area, b: Area): boolean {
+	return a.x <= b.x + b.width && a.x + a.width >= b.x && a.y <= b.y + b.height && a.y + a.height >= b.y;
+}
