@@ -39,11 +39,6 @@
 			"height": 799,
 			"path": "image/title_bg.png"
 		},
-		"titleScene": {
-			"type": "script",
-			"path": "script/titleScene.js",
-			"global": true
-		},
 		"bg02": {
 			"type": "image",
 			"width": 1500,
@@ -53,7 +48,7 @@
 		"font12": {
 			"type": "image",
 			"width": 256,
-			"height": 108,
+			"height": 116,
 			"path": "image/font12.png"
 		},
 		"Background": {
@@ -76,11 +71,6 @@
 			"path": "script/Player.js",
 			"global": true
 		},
-		"gameScene": {
-			"type": "script",
-			"path": "script/gameScene.js",
-			"global": true
-		},
 		"font": {
 			"type": "text",
 			"path": "text/font.txt"
@@ -92,11 +82,6 @@
 		"Gauge": {
 			"type": "script",
 			"path": "script/Gauge.js",
-			"global": true
-		},
-		"failureScene": {
-			"type": "script",
-			"path": "script/failureScene.js",
 			"global": true
 		},
 		"utils": {
@@ -132,6 +117,38 @@
 			"width": 1200,
 			"height": 628,
 			"path": "image/bg04.gif"
+		},
+		"button_pressed": {
+			"type": "image",
+			"width": 315,
+			"height": 135,
+			"path": "image/button_pressed.png"
+		},
+		"tweet": {
+			"type": "image",
+			"width": 142,
+			"height": 49,
+			"path": "image/tweet.png"
+		},
+		"createButton": {
+			"type": "script",
+			"path": "script/createButton.js",
+			"global": true
+		},
+		"createFailureScene": {
+			"type": "script",
+			"path": "script/createFailureScene.js",
+			"global": true
+		},
+		"createGameScene": {
+			"type": "script",
+			"path": "script/createGameScene.js",
+			"global": true
+		},
+		"createTitleScene": {
+			"type": "script",
+			"path": "script/createTitleScene.js",
+			"global": true
 		}
 	},
 	"moduleMainScripts": {},

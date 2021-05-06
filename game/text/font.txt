@@ -3,6 +3,8 @@ AWAKE
 CAFFEINE
 01234567890.,
 
+retry
+
 起床成功！
 出勤成功！
 
