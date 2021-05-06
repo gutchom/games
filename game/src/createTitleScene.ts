@@ -51,7 +51,7 @@ export default function createTitleScene(): g.Scene {
     });
 
     scene.onPointDownCapture.add(() => {
-      g.game.replaceScene(createGameScene(1));
+      g.game.replaceScene(createGameScene(1, { time: 0, count: 0 }));
     })
   });
 

@@ -1,6 +1,6 @@
 import GameCore, { Score } from './GameCore'
 
-export default function createGameScene(stage: number, score: Score = { time: 0, count: 0 }): g.Scene {
+export default function createGameScene(stage: number, score: Score): g.Scene {
   const scene = new g.Scene({
     game: g.game,
     assetIds: [

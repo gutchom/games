@@ -1,4 +1,5 @@
 import { AudioAsset } from '@akashic/akashic-engine'
+import createButton from './createButton'
 import createGameScene from './createGameScene'
 import createFailureScene from './createFailureScene'
 import { intersectArea, limit } from './utils'
@@ -148,7 +149,6 @@ export default class GameCore {
       this.handleFailure(MESSAGE[this.stage]);
       return;
     }
-
     if (!this.isLastStage) {
       this.awake -= 0.5;
     }
