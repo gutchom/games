@@ -6,15 +6,30 @@
   "author": "gutchom",
   "license": "MIT",
   "scripts": {
+    "prebuild": "run-s font update",
     "build": "rimraf ./script && tsc && akashic-cli-scan asset script",
     "update": "akashic-cli-scan asset && akashic-cli-scan globalScripts",
     "lint": "eslint -c .eslintrc 'src/**/*.ts' --fix",
-    "prestart": "npm run font && npm run update && npm run build",
-    "start": "akashic-sandbox .",
-    "preexport": "npm run prestart",
+    "watch:export": "npm-watch export",
+    "presandbox": "npm run build",
+    "sandbox": "akashic-sandbox .",
+    "start": "npm-watch sandbox",
+    "preexport": "npm run build",
     "export": "rimraf ./bundle && akashic-cli-export-html --magnify --bundle --minify -o ./bundle",
     "test": "jest",
     "font": "bmpfont-generator ./font/PixelMplus/PixelMplus12-Regular.ttf ./image/font12.png -f ./text/font.txt --json ./text/font12_glyphs.json --no-anti-alias"
+  },
+  "watch": {
+    "sandbox": {
+      "patterns": ["audio", "font", "image", "src", "text"],
+      "extensions": "aac,ogg,jpg,gif,png,ts,txt",
+      "ignore": "image/font12.png"
+    },
+    "export": {
+      "patterns": ["audio", "font", "image", "src", "text"],
+      "extensions": "aac,ogg,jpg,gif,png,ts,txt",
+      "ignore": "image/font12.png"
+    }
   },
   "devDependencies": {
     "@akashic/akashic-cli": "^2.9.1",
@@ -32,6 +47,8 @@
     "eslint": "7.22.0",
     "eslint-plugin-import": "2.22.1",
     "jest": "26.6.3",
+    "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.9.0",
     "rimraf": "3.0.2",
     "ts-jest": "26.5.3",
     "typescript": "3.9.9"

@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
     "target": "ES5",
-    "lib": ["esnext"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
     "noImplicitAny": true,
     "module": "commonjs" ,
     "outDir": "script",

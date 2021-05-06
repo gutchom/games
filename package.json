@@ -16,22 +16,21 @@
     "lint": "run-s lint:*",
     "lint:js": "eslint ./src/**/*.ts* --fix",
     "lint:css": "stylelint ./src/style/**/*.css --fix",
-    "dev:js": "webpack serve --mode=development --progress",
+    "prettier": "prettier",
+    "dev:js": "webpack --mode=development --progress --watch",
     "dev:css": "postcss ./src/style/*.css -d ./public/css -w",
+    "dev:game": "cd ./game && npm run watch:export",
+    "dev:game:copy": "cpx 'game/bundle/**/*' ./public -w",
     "dev:asset": "cpx 'src/asset/**/*' ./public -w",
+    "dev:serve": "firebase emulators:start",
+    "dev:serve:sync": "browser-sync start -f ./public -p localhost:5000 --port 3000",
     "build": "cross-env NODE_ENV=production run-s lint prettier test clean build:**",
     "build:js": "webpack --mode=production --progress",
     "build:css": "postcss ./src/style/*.css -d ./public/css",
+    "build:game": "cd game && npm run export && cpx './bundle/**/*' ../public",
     "build:asset": "cpx 'src/asset/**/*' './public'",
     "clean": "rimraf ./public/*"
   },
-  "pre-commit": [
-    "lint",
-    "prettier"
-  ],
-  "pre-push": [
-    "test"
-  ],
   "dependencies": {
     "date-fns": "^2.21.1",
     "firebase": "^8.4.3",
@@ -50,6 +49,7 @@
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "autoprefixer": "^10.2.5",
     "babel-loader": "^8.2.2",
+    "browser-sync": "^2.26.14",
     "caniuse-lite": "^1.0.30001220",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "cpx": "^1.5.0",
@@ -69,6 +69,7 @@
     "postcss-import": "^14.0.1",
     "postcss-preset-env": "^6.7.0",
     "postcss-reporter": "^7.0.2",
+    "prettier": "^2.2.1",
     "react-test-renderer": "^17.0.2",
     "rimraf": "^3.0.2",
     "source-map-loader": "^2.0.1",
