@@ -1,5 +1,3 @@
-import { ImageAsset } from '@akashic/akashic-engine'
-
 export default class Background extends g.Sprite {
   constructor(scene: g.Scene, parent: g.E, assetId: string) {
     const asset = scene.asset.getImageById(assetId);
