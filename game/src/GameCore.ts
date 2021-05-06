@@ -124,14 +124,14 @@ export default class GameCore {
 
   handleGame() {
     this.background.shiftParallax(this.player.x / g.game.width);
-    if (g.game.age % (18 - this.stage * 3) === 0) {
+    if (g.game.age % (10 - this.stage * 2) === 0) {
       const monster = new Monster(this.scene, this.gameLayer);
       monster.onUpdate.add(() => {
         if (intersectArea(this.player, monster)) {
           this.count++;
           this.se.play();
-          this.awake += 25;
-          this.caffeine += 120;
+          this.awake += 30;
+          this.caffeine += 75;
           monster.destroy();
         }
       }, this);
@@ -150,9 +150,9 @@ export default class GameCore {
     }
 
     if (!this.isLastStage) {
-      this.awake -= 1;
+      this.awake -= 0.5;
     }
-    this.caffeine -= 4;
+    this.caffeine -= 3;
   }
 
   handleFailure(messages: string[]) {
