@@ -48,7 +48,7 @@
 		"font12": {
 			"type": "image",
 			"width": 256,
-			"height": 116,
+			"height": 108,
 			"path": "image/font12.png"
 		},
 		"Background": {
