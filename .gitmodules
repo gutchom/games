@@ -1,0 +1,3 @@
+[submodule "game/caffeine-beater"]
+	path = game/caffeine-beater
+	url = git@github.com:gutchom/caffeine-beater.git
