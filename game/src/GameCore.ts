@@ -98,17 +98,14 @@ export default class GameCore {
   }
 
   handleStart() {
-    const title = new g.Label({
+    const title = new g.Sprite({
       scene: this.scene,
       parent: this.rootLayer,
-      font: this.font,
-      text: `STAGE ${this.stage}`,
-      textColor: 'white',
-      fontSize: 64,
+      src: this.scene.asset.getImageById(`Stage${this.stage}`),
       anchorX: 0.5,
       anchorY: 0.5,
       x: g.game.width / 2,
-      y: 360,
+      y: 400,
     });
 
     this.scene.onUpdate.add(() => {
@@ -166,7 +163,7 @@ export default class GameCore {
     scene.onUpdate.removeAll();
     scene.append(new g.FilledRect({
       scene,
-      cssColor: 'white',
+      cssColor: 'black',
       opacity: 0.75,
       width: g.game.width,
       height: g.game.height,
@@ -175,7 +172,7 @@ export default class GameCore {
       scene,
       font,
       text: message[this.stage],
-      textColor: 'black',
+      textColor: 'lime',
       fontSize: 64,
       x: 400,
       y: 240,
@@ -184,7 +181,7 @@ export default class GameCore {
       scene,
       font,
       text: `プレイ時間: ${this.result.time}秒`,
-      textColor: 'black',
+      textColor: 'white',
       fontSize: 48,
       x: 320,
       y: 420,
@@ -193,7 +190,7 @@ export default class GameCore {
       scene,
       font,
       text: `飲んだ本数: ${this.result.count}本`,
-      textColor: 'black',
+      textColor: 'white',
       fontSize: 48,
       x: 320,
       y: 468,

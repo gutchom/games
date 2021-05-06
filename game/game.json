@@ -29,8 +29,8 @@
 		},
 		"title": {
 			"type": "image",
-			"width": 821,
-			"height": 258,
+			"width": 751,
+			"height": 174,
 			"path": "image/title.png"
 		},
 		"title_bg": {
@@ -48,7 +48,7 @@
 		"font12": {
 			"type": "image",
 			"width": 256,
-			"height": 108,
+			"height": 92,
 			"path": "image/font12.png"
 		},
 		"Background": {
@@ -167,6 +167,30 @@
 			"width": 172,
 			"height": 63,
 			"path": "image/Next.png"
+		},
+		"Stage1": {
+			"type": "image",
+			"width": 284,
+			"height": 74,
+			"path": "image/Stage1.png"
+		},
+		"Stage2": {
+			"type": "image",
+			"width": 289,
+			"height": 74,
+			"path": "image/Stage2.png"
+		},
+		"Stage3": {
+			"type": "image",
+			"width": 289,
+			"height": 74,
+			"path": "image/Stage3.png"
+		},
+		"Stage4": {
+			"type": "image",
+			"width": 407,
+			"height": 80,
+			"path": "image/Stage4.png"
 		}
 	},
 	"moduleMainScripts": {},
