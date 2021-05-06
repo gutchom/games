@@ -18,15 +18,14 @@ export default function createTitleScene(): g.Scene {
     scene.append(mainLayer);
     scene.append(hudLayer);
 
-    const titlePosY = 280;
-    const titleMoveWidth = 24;
     const title = new g.Sprite({
       scene,
       parent: hudLayer,
       src: scene.asset.getImageById('title'),
       anchorX: 0.5,
       x: g.game.width / 2,
-      y: titlePosY,
+      scaleY: 1.5,
+      scaleX: 1.2,
     });
 
     const background = new g.Sprite({
@@ -46,7 +45,10 @@ export default function createTitleScene(): g.Scene {
       background.modified();
 
       /* タイトルをふわふわ動かす */
-      title.y = titlePosY - titleMoveWidth * Math.abs(Math.sin(5 * g.game.age / 180 * Math.PI));
+      const titlePosY = 280;
+      const titleMoveWidth = 24;
+      const titleMoveSpeed = 4.5;
+      title.y = titlePosY - titleMoveWidth * Math.abs(Math.sin(titleMoveSpeed * g.game.age / 180 * Math.PI));
       title.modified();
     });
 
