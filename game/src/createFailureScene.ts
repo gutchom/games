@@ -1,5 +1,6 @@
 import { Score } from './GameCore'
-import createTitleScene from './titleScene'
+import createTitleScene from './createTitleScene'
+import createButton from './createButton'
 
 export default function createFailureScene(score: Score, ...messages: string[]): g.Scene {
   const scene = new g.Scene({

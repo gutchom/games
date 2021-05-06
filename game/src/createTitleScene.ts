@@ -1,4 +1,4 @@
-import createGameScene from './gameScene'
+import createGameScene from './createGameScene'
 
 export default function createTitleScene(): g.Scene {
   const scene = new g.Scene({
