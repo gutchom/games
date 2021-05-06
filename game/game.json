@@ -1,21 +1,9 @@
 {
 	"width": 1080,
 	"height": 1920,
-	"fps": 30,
+	"fps": 60,
 	"main": "./script/main.js",
 	"assets": {
-		"player": {
-			"type": "image",
-			"width": 115,
-			"height": 335,
-			"path": "image/player.png"
-		},
-		"shot": {
-			"type": "image",
-			"width": 16,
-			"height": 16,
-			"path": "image/shot.png"
-		},
 		"se": {
 			"type": "audio",
 			"path": "audio/se",
@@ -25,7 +13,7 @@
 		"bg01": {
 			"type": "image",
 			"width": 1500,
-			"height": 799,
+			"height": 800,
 			"path": "image/bg01.png"
 		},
 		"monster": {
@@ -38,10 +26,117 @@
 			"type": "script",
 			"path": "script/main.js",
 			"global": true
+		},
+		"title": {
+			"type": "image",
+			"width": 821,
+			"height": 258,
+			"path": "image/title.png"
+		},
+		"title_bg": {
+			"type": "image",
+			"width": 3000,
+			"height": 799,
+			"path": "image/title_bg.png"
+		},
+		"titleScene": {
+			"type": "script",
+			"path": "script/titleScene.js",
+			"global": true
+		},
+		"bg02": {
+			"type": "image",
+			"width": 1500,
+			"height": 800,
+			"path": "image/bg02.jpg"
+		},
+		"font12": {
+			"type": "image",
+			"width": 256,
+			"height": 108,
+			"path": "image/font12.png"
+		},
+		"Background": {
+			"type": "script",
+			"path": "script/Background.js",
+			"global": true
+		},
+		"GameCore": {
+			"type": "script",
+			"path": "script/GameCore.js",
+			"global": true
+		},
+		"Monster": {
+			"type": "script",
+			"path": "script/Monster.js",
+			"global": true
+		},
+		"Player": {
+			"type": "script",
+			"path": "script/Player.js",
+			"global": true
+		},
+		"gameScene": {
+			"type": "script",
+			"path": "script/gameScene.js",
+			"global": true
+		},
+		"font": {
+			"type": "text",
+			"path": "text/font.txt"
+		},
+		"font12_glyphs": {
+			"type": "text",
+			"path": "text/font12_glyphs.json"
+		},
+		"Gauge": {
+			"type": "script",
+			"path": "script/Gauge.js",
+			"global": true
+		},
+		"failureScene": {
+			"type": "script",
+			"path": "script/failureScene.js",
+			"global": true
+		},
+		"utils": {
+			"type": "script",
+			"path": "script/utils.js",
+			"global": true
+		},
+		"globals": {
+			"type": "script",
+			"path": "script/globals.js",
+			"global": true
+		},
+		"player_left": {
+			"type": "image",
+			"width": 115,
+			"height": 335,
+			"path": "image/player_left.png"
+		},
+		"player_right": {
+			"type": "image",
+			"width": 115,
+			"height": 335,
+			"path": "image/player_right.png"
+		},
+		"bg03": {
+			"type": "image",
+			"width": 1500,
+			"height": 800,
+			"path": "image/bg03.png"
+		},
+		"bg04": {
+			"type": "image",
+			"width": 1200,
+			"height": 628,
+			"path": "image/bg04.gif"
 		}
 	},
 	"moduleMainScripts": {},
 	"environment": {
 		"sandbox-runtime": "3"
-	}
+	},
+	"globalScripts": []
 }
