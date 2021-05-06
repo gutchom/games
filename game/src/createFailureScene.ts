@@ -31,8 +31,8 @@ export default function createFailureScene(score: Score, ...messages: string[]):
       font,
       text: `プレイ時間: ${score.time}秒`,
       textColor: 'white',
-      fontSize: 32,
-      x: 400,
+      fontSize: 48,
+      x: 320,
       y: 500,
     }));
     scene.append(new g.Label({
@@ -40,9 +40,9 @@ export default function createFailureScene(score: Score, ...messages: string[]):
       font,
       text: `飲んだ本数: ${score.count}本`,
       textColor: 'white',
-      fontSize: 32,
-      x: 400,
-      y: 532,
+      fontSize: 48,
+      x: 320,
+      y: 548,
     }));
     messages.forEach((message, i) => {
       scene.append(new g.Label({
@@ -51,7 +51,7 @@ export default function createFailureScene(score: Score, ...messages: string[]):
         text: message,
         textColor: 'red',
         fontSize: 64,
-        x: 200,
+        x: 160,
         y: 300 + i * 64,
       }));
     });
@@ -68,16 +68,14 @@ export default function createFailureScene(score: Score, ...messages: string[]):
       const url = 'https://game.gutchom.com/wake-me-up';
       location.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(body)}&url=${url}&hashtags=${hashtag}`;
     });
-    tweetButton.x = 640;
-    tweetButton.y = 700;
+    tweetButton.moveTo(640, 700);
     scene.append(tweetButton);
 
     const retryButton = createButton(scene, new g.Sprite({
       scene,
       src: scene.asset.getImageById('Retry'),
     }), () => {g.game.replaceScene(createTitleScene())});
-    retryButton.x = 120;
-    retryButton.y = 700;
+    retryButton.moveTo(120, 700);
     scene.append(retryButton);
   });
 

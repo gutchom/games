@@ -177,26 +177,26 @@ export default class GameCore {
       text: message[this.stage],
       textColor: 'black',
       fontSize: 64,
-      x: 200,
-      y: 300,
+      x: 400,
+      y: 240,
     }));
     scene.append(new g.Label({
       scene,
       font,
       text: `プレイ時間: ${this.result.time}秒`,
       textColor: 'black',
-      fontSize: 32,
-      x: 400,
-      y: 500,
+      fontSize: 48,
+      x: 320,
+      y: 420,
     }));
     scene.append(new g.Label({
       scene,
       font,
       text: `飲んだ本数: ${this.result.count}本`,
       textColor: 'black',
-      fontSize: 32,
-      x: 400,
-      y: 532,
+      fontSize: 48,
+      x: 320,
+      y: 468,
     }));
 
     this.scene.onPointDownCapture.add(() => {
