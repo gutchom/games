@@ -198,9 +198,11 @@ export default class GameCore {
       x: 320,
       y: 468,
     }));
-
-    this.scene.onPointDownCapture.add(() => {
-      g.game.replaceScene(createGameScene(this.stage + 1, this.result));
-    })
+    const nextButton = createButton(scene, new g.Sprite({
+      scene,
+      src: scene.asset.getImageById('Next'),
+    }), () => {g.game.replaceScene(createGameScene(this.stage + 1, this.result))});
+    nextButton.moveTo(360, 640);
+    scene.append(nextButton);
   }
 }
