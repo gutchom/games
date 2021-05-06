@@ -8,6 +8,10 @@ export default function createFailureScene(score: Score, ...messages: string[]):
     assetIds: [
       'font12',
       'font12_glyphs',
+      'button',
+      'button_pressed',
+      'Tweet',
+      'Retry',
     ],
   });
 
@@ -52,9 +56,29 @@ export default function createFailureScene(score: Score, ...messages: string[]):
       }));
     });
 
-    scene.onPointDownCapture.add(() => {
-      g.game.replaceScene(createTitleScene());
-    })
+    const tweetButton = createButton(scene, new g.Sprite({
+      scene,
+      src: scene.asset.getImageById('Tweet'),
+    }), () => {
+      const time = score.time >= 60
+        ? `${Math.floor(score.time / 60)}分${score.time % 60}秒`
+        : `${score.time}秒`;
+      const body = `私は${time}間でエナジードリンクを${score.count}本飲みました`;
+      const hashtag = 'WakeMeUpGame';
+      const url = 'https://game.gutchom.com/wake-me-up';
+      location.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(body)}&url=${url}&hashtags=${hashtag}`;
+    });
+    tweetButton.x = 640;
+    tweetButton.y = 700;
+    scene.append(tweetButton);
+
+    const retryButton = createButton(scene, new g.Sprite({
+      scene,
+      src: scene.asset.getImageById('Retry'),
+    }), () => {g.game.replaceScene(createTitleScene())});
+    retryButton.x = 120;
+    retryButton.y = 700;
+    scene.append(retryButton);
   });
 
   return scene;

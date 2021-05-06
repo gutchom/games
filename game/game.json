@@ -124,12 +124,6 @@
 			"height": 135,
 			"path": "image/button_pressed.png"
 		},
-		"tweet": {
-			"type": "image",
-			"width": 142,
-			"height": 49,
-			"path": "image/tweet.png"
-		},
 		"createButton": {
 			"type": "script",
 			"path": "script/createButton.js",
@@ -149,6 +143,24 @@
 			"type": "script",
 			"path": "script/createTitleScene.js",
 			"global": true
+		},
+		"button": {
+			"type": "image",
+			"width": 315,
+			"height": 135,
+			"path": "image/button.png"
+		},
+		"Retry": {
+			"type": "image",
+			"width": 209,
+			"height": 74,
+			"path": "image/Retry.png"
+		},
+		"Tweet": {
+			"type": "image",
+			"width": 210,
+			"height": 63,
+			"path": "image/Tweet.png"
 		}
 	},
 	"moduleMainScripts": {},
