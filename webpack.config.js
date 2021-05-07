@@ -3,7 +3,7 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
   entry: {
-    bundle: './src/script/index.tsx'
+    'caffeine-beater': './src/script/entries/caffeine-beater.tsx',
   },
   output: {
     filename: '[name].js',
@@ -46,4 +46,4 @@ module.exports = {
       },
     ],
   },
-}
+};

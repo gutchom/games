@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Caffeine Beater</title>
+
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <!--
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/caffeine-beater/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/caffeine-beater/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/caffeine-beater/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#00aba9">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Caffeine Beater">
+  <meta property="og:description" content="エナドリを摂取して出勤するゲームです">
+  <meta property="og:image" content="https://games.gutchom.com/img/og/caffeine_beater_icon_192.png">
+  <meta property="og:url" content="https://games.gutchom.com/caffeine-beater">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@gutchom">
+  <meta name="twitter:creator" content="@gutchom">
+  -->
+  <style type="text/css">
+    .game-wrapper {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 178%;
+    }
+    .game-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-wrapper">
+    <iframe
+      id="caffeine-beater"
+      title="Caffeine Beater"
+      src="./game/index.html"
+      width="1080"
+      height="1920"
+    ></iframe>
+  </div>
+
+  <div id="app"></div>
+
+  <script type="text/javascript" src="/js/vendor.js"></script>
+  <script type="text/javascript" src="/js/caffeine-beater.js"></script>
+</body>
+</html>
