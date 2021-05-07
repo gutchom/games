@@ -99,9 +99,9 @@
     "no-nested-ternary": "off",
     "class-methods-use-this": "off",
     "consistent-return": "off",
-    "semi": ["error", "never", {"beforeStatementContinuationChars": "never"}],
+    "semi": ["error", "always"],
     "semi-spacing": ["error", {"after": true, "before": false}],
-    "semi-style": ["error", "first"],
+    "semi-style": ["error", "last"],
     "no-extra-semi": "error",
     "no-unexpected-multiline": "error",
     "no-unreachable": "error"

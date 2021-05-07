@@ -2,7 +2,6 @@
   "name": "gutchom-games",
   "private": true,
   "version": "1.0.0",
-  "description": "web page of monster-rushhour",
   "author": "gutchom",
   "license": "MIT",
   "engines": {
@@ -19,17 +18,15 @@
     "prettier": "prettier",
     "dev:js": "webpack --mode=development --progress --watch",
     "dev:css": "postcss ./src/style/*.css -d ./public/css -w",
-    "dev:game": "cd ./game && npm run watch:export",
-    "dev:game:copy": "cpx 'game/bundle/**/*' ./public -w",
     "dev:asset": "cpx 'src/asset/**/*' ./public -w",
     "dev:serve": "firebase emulators:start",
     "dev:serve:sync": "browser-sync start -f ./public -p localhost:5000 --port 3000",
     "build": "cross-env NODE_ENV=production run-s lint prettier test clean build:**",
     "build:js": "webpack --mode=production --progress",
     "build:css": "postcss ./src/style/*.css -d ./public/css",
-    "build:game": "cd game && npm run export && cpx './bundle/**/*' ../public",
     "build:asset": "cpx 'src/asset/**/*' './public'",
-    "clean": "rimraf ./public/*"
+    "clean": "rimraf ./public/*",
+    "count": "printf '\\e[36m\n  This project has\\e[35m %s lines\\e[36m of source code!\n\n\\e[m' $(find ./src -name '*.html' -o -name '*.css' -o -name '*.js*' -o -name '*.ts*' -o -name '*.json' | xargs wc -l | tail -1 | awk '{print $1}')"
   },
   "dependencies": {
     "date-fns": "^2.21.1",
@@ -61,6 +58,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-standard": "^5.0.0",
     "eslint-plugin-tsc": "^2.0.0",
+    "firebase-tools": "^9.10.2",
     "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.2.13",
